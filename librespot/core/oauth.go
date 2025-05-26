@@ -57,13 +57,13 @@ func getOAuthToken(clientId string, clientSecret string) OAuth {
 	urlPath := "https://accounts.spotify.com/authorize?" +
 		"client_id=" + clientId +
 		"&response_type=code" +
-		"&redirect_uri=http://localhost:8888/callback" +
+		"&redirect_uri=http://127.0.0.1:8888/callback" +
 		"&scope=streaming"
 	fmt.Println(urlPath)
 
 	http.HandleFunc("/callback", func(w http.ResponseWriter, r *http.Request) {
 		params := r.URL.Query()
-		auth, err := GetOauthAccessToken(params.Get("code"), "http://localhost:8888/callback", clientId, clientSecret)
+		auth, err := GetOauthAccessToken(params.Get("code"), "http://127.0.0.1:8888/callback", clientId, clientSecret)
 		if err != nil {
 			fmt.Fprintf(w, "Error getting token %q", err)
 			return
