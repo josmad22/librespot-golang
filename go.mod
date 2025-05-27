@@ -1,4 +1,4 @@
-github.com/josmad22/librespot-golang
+module github.com/josmad22/librespot-golang
 
 go 1.16
 
